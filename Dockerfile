@@ -7,9 +7,8 @@ ENV DANTE_CLI_VERSION v0.0.5
 
 RUN apk add --update ca-certificates openssl git \
  && apk add --update -t deps curl  \
- && apk add --update gettext tar gzip build-base python3-pip \
+ && apk add --update gettext tar gzip build-base py3-setuptools \
  && curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
- && curl -L https://storage.googleapis.com/kubernetes-helm/${HELM_FILENAME} | tar xz && mv linux-amd64/helm /bin/helm && rm -rf linux-amd64 \
  && chmod +x /usr/local/bin/kubectl \
  && pip3 install awscli --upgrade \
  && apk del --purge deps \
